@@ -102,7 +102,7 @@ export default function Home() {
 			<footer id="contact" className="scroll-mt-24 border-t border-line py-16">
 				<FieldLabel>contact</FieldLabel>
 				<h2 className="mt-4 font-display text-3xl font-bold tracking-tight">
-					Building something?
+					Building something? Let's talk.
 				</h2>
 				<p className="mt-3 max-w-xl leading-relaxed text-ink/85">
 					I&rsquo;m open to frontend roles. The fastest way to reach me is
