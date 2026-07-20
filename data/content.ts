@@ -92,8 +92,8 @@ export const caseStudies: CaseStudy[] = [
 				body: "Developed the NFT trading platform that processed over $1M in transaction volume. Wallet interactions demand exactness: BigNumber precision end to end, defensive error handling around every signature and transaction state, and UIs that never show a user a number the chain would disagree with.",
 			},
 			{
-				heading: "No-code claim tool",
-				body: "Built a claim tool that let projects distribute NFTs without writing code — it processed 100K+ on-chain claims. The interesting work was keeping it fast and stable during network congestion, when gas spikes and pending transactions turn happy paths into edge cases.",
+				heading: "No-code NFT launch platform (Lootex Studio)",
+				body: "Built the creator studio that let projects launch NFT collections without writing code — asset upload, sale rules, and a four-step on-chain publish flow: contract deploy, IPFS sync, lazy mint, claim conditions. The interesting work was failure recovery. Any step can die mid-flight — gas spikes, dropped wallets, closed tabs — so the flow re-derives its progress from chain state on load, and creators resume instead of starting over. Shipped in production campaigns, including an official collaboration with Soneium, Sony's Layer 2.",
 			},
 			{
 				heading: "FizzPop & design system",
