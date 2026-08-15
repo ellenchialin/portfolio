@@ -50,9 +50,9 @@ export const caseStudies: CaseStudy[] = [
 		label: "case_study / qlo",
 		company: "Qlo — AI-native insurtech (YC S26)",
 		period: "Jan 2026 – May 2026",
-		title: "An underwriting workstation, zero to beta in four months",
+		title: "An underwriting workstation, inherited demo to beta in four months",
 		summary:
-			"Qlo replaces the fragmented legacy tools and spreadsheets that commercial insurance carriers use to process submissions. I co-developed the frontend from the first commit to a working beta; the product was later selected for Y Combinator's S26 batch.",
+			"Qlo replaces the fragmented legacy tools and spreadsheets that commercial insurance carriers use to process submissions. I inherited a demo-stage frontend with no handover and took it to a working beta; the product was later selected for Y Combinator's S26 batch.",
 		sections: [
 			{
 				heading: "The hard part",
@@ -68,11 +68,11 @@ export const caseStudies: CaseStudy[] = [
 			},
 			{
 				heading: "Outcome",
-				body: "Zero to a working beta used by design partners in roughly four months, with the team later selected for YC S26. The product is internal and non-public, so this page shows the architecture rather than screenshots — the diagram below is the generic shape of the system.",
+				body: "From an inherited demo to a working beta used by design partners in roughly four months, with the team later selected for YC S26. The product is internal and non-public, so this page shows the architecture rather than screenshots — the diagram below is the generic shape of the system.",
 			},
 		],
 		metrics: [
-			{ value: "0 → beta", caption: "in ~4 months" },
+			{ value: "demo → beta", caption: "in ~4 months" },
 			{ value: "YC S26", caption: "team selected" },
 			{ value: "RHF + Zod", caption: "schema-driven forms" },
 		],
