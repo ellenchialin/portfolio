@@ -6,7 +6,7 @@ Built with **Next.js 14 (App Router) + Tailwind CSS + TypeScript**, exported as 
 
 ## Highlights
 
-- **Hero review panel** — the profile renders as fields coming out of an AI extraction pipeline, verified one by one. It's a working nod to the review UIs I built at Qlo.
+- **Hero review panel** — the profile renders as fields coming out of an AI extraction pipeline, verified one by one. It's inspired by the extraction review work at Qlo.
 - **Schema-driven content** — every string on the page lives in [`data/content.ts`](data/content.ts); components render from it rather than hardcoding copy.
 - **Accessible by default** — visible keyboard focus throughout, the hero animation respects `prefers-reduced-motion`, and the architecture diagram ships a full text alternative.
 

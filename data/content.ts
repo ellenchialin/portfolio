@@ -10,7 +10,7 @@ export const profile = {
 	status: "open to work",
 	headline: "Frontend Engineer building complex web products.",
 	intro:
-		"React + TypeScript engineer with 0→1 experience across AI and Web3 startups.",
+		"React + TypeScript engineer with 4 years owning complex product frontends end to end across AI-native SaaS and Web3.",
 	links: {
 		github: "https://github.com/ellenchialin",
 		repo: "https://github.com/ellenchialin/portfolio",
@@ -21,12 +21,12 @@ export const profile = {
 };
 
 // The hero "review panel" — profile rendered as AI-extracted fields.
-// A nod to the document-extraction review UIs built at Qlo.
+// Inspired by the document-extraction review work at Qlo.
 export const reviewFields = [
 	{ field: "name", value: "Chia Lin (Ellen) Chen" },
 	{ field: "role", value: "Frontend Engineer" },
 	{ field: "stack", value: "React · Next.js · TypeScript" },
-	{ field: "experience", value: "4 yrs · AI SaaS / Web3 · 0→1 products" },
+	{ field: "experience", value: "4 yrs · AI-native SaaS / Web3" },
 	{ field: "location", value: "Taipei · UTC+8" },
 	{ field: "status", value: "open_to_work" },
 ];
@@ -50,31 +50,31 @@ export const caseStudies: CaseStudy[] = [
 		label: "case_study / qlo",
 		company: "Qlo — AI-native insurtech (YC S26)",
 		period: "Jan 2026 – May 2026",
-		title: "An underwriting workstation, inherited demo to beta in four months",
+		title: "An underwriting workstation, inherited demo to production beta in four months",
 		summary:
-			"Qlo replaces the fragmented legacy tools and spreadsheets that commercial insurance carriers use to process submissions. I inherited a demo-stage frontend with no handover and took it to a working beta; the product was later selected for Y Combinator's S26 batch.",
+			"Commercial insurance carriers process submissions across legacy tools and spreadsheets; Qlo consolidates that work into one AI-native workstation. As the sole frontend engineer, I inherited a demo-stage frontend with no handover and took it to a production beta.",
 		sections: [
 			{
 				heading: "The hard part",
-				body: "Underwriting data is deeply nested and interdependent: a single submission spans dozens of coverage sections, each with its own validation rules, and a change in one field can reprice the entire policy. On top of that, most field values arrive from an AI extraction pipeline — which means the UI has to make machine-generated data easy for a human to verify, correct, and trust.",
+				body: "Underwriting ends in documents that carry legal weight: quotes, binders, invoices. Every carrier client wants its own variation of the quote form, a single field change can reprice the policy, and what reaches the broker has to match exactly what was priced.",
 			},
 			{
 				heading: "What I built",
-				body: "A schema-driven form engine: coverage schemas define the fields, validation, and dependencies, and the frontend renders synchronized multi-step workflows from them. Built on React Hook Form + Zod, with a premium calculation engine that recomputes as underwriters edit. Alongside it, review UIs for the AI extraction pipeline — side-by-side views where underwriters confirm or correct auto-extracted values before they enter the form of record.",
+				body: "Extended the submission workflow from quote to bind, adding custom quote options, binders, and invoices. Designed a schema-driven quote form (React Hook Form + Zod) that handles per-client variations, and improved the premium calculation behind it. Outside the core workflow, I redesigned the login flow with 2FA and built broker management.",
 			},
 			{
 				heading: "Decisions that mattered",
-				body: "Driving forms from schemas instead of hand-writing them meant new coverage lines shipped in days, not weeks. Zod schemas doubled as the single source of truth for both validation and TypeScript types, which kept the deeply nested state honest. For the review UIs, the guiding rule was that a human should never have to trust the AI blindly: every extracted value stays visibly provisional until confirmed.",
+				body: "Per-client quote schemas lived in the frontend; I proposed serving them from the backend as a contract, so onboarding a new client becomes configuration rather than a frontend release. I also proposed rendering quote letters as PDF instead of HTML, so every recipient sees the same fixed document and the issued version can be retained as-is for compliance; the team adopted it.",
 			},
 			{
 				heading: "Outcome",
-				body: "From an inherited demo to a working beta used by design partners in roughly four months, with the team later selected for YC S26. The product is internal and non-public, so this page shows the architecture rather than screenshots — the diagram below is the generic shape of the system.",
+				body: "From an inherited demo to a production beta in roughly four months, tested by a design partner whose feedback informed ongoing iterations. The product is internal and non-public, so this page shows the architecture rather than screenshots — the diagram below is the shape of the submission workflow.",
 			},
 		],
 		metrics: [
 			{ value: "demo → beta", caption: "in ~4 months" },
-			{ value: "YC S26", caption: "team selected" },
-			{ value: "RHF + Zod", caption: "schema-driven forms" },
+			{ value: "quote → bind", caption: "end-to-end workflow" },
+			{ value: "sole", caption: "frontend engineer" },
 		],
 		hasDiagram: true,
 	},
@@ -85,19 +85,23 @@ export const caseStudies: CaseStudy[] = [
 		period: "Jul 2022 – Dec 2025",
 		title: "Trading, claims, and a game economy on-chain",
 		summary:
-			"Three and a half years shipping consumer-facing Web3 products where a frontend bug can cost users real money — an NFT trading platform, a no-code claim tool, and the frontend for a Web3 game.",
+			"Three and a half years shipping consumer-facing Web3 products where a frontend bug can cost users real money — an NFT trading platform, a no-code NFT launch platform, and the frontend for a Web3 game.",
 		sections: [
 			{
 				heading: "Trading platform",
-				body: "Developed the NFT trading platform that processed over $1M in transaction volume. Wallet interactions demand exactness: BigNumber precision end to end, defensive error handling around every signature and transaction state, and UIs that never show a user a number the chain would disagree with.",
+				body: "Developed the NFT trading platform that processed over $1M in transaction volume and 100K+ on-chain claims, integrating smart contracts directly. Wallet interactions demand exactness: precise price and balance calculations with BigNumber precision end to end, defensive error handling around every signature and transaction state, and UIs that never show a user a number the chain would disagree with.",
 			},
 			{
 				heading: "No-code NFT launch platform (Lootex Studio)",
-				body: "Built the creator studio that let projects launch NFT collections without writing code — asset upload, sale rules, and a four-step on-chain publish flow: contract deploy, IPFS sync, lazy mint, claim conditions. The interesting work was failure recovery. Any step can die mid-flight — gas spikes, dropped wallets, closed tabs — so the flow re-derives its progress from chain state on load, and creators resume instead of starting over. Shipped in production campaigns, including an official collaboration with Soneium, Sony's Layer 2.",
+				body: "Solely built the creator studio that let projects launch NFT collections without writing code — asset upload, sale rules, and a four-step on-chain publish flow: contract deploy, IPFS sync, lazy mint, claim conditions. The interesting work was failure recovery. Any step can die mid-flight — gas spikes, dropped wallets, closed tabs — so the flow re-derives its progress from chain state on load, and creators resume instead of starting over. Shipped in production campaigns, including an official collaboration with Soneium, Sony's Layer 2.",
 			},
 			{
-				heading: "FizzPop & design system",
-				body: "Led frontend for the Web3 game FizzPop, focusing on rendering performance for smooth gameplay; the game reached 39% Day-1 retention, roughly 3–4x the category average. Also implemented the team's Tailwind CSS design system with Storybook, standardizing accessible components and shortening UI development cycles across the team.",
+				heading: "Design system & delivery",
+				body: "Co-built the team's Storybook design system of accessible, responsive Tailwind components, and reviewed code to keep usage consistent. Built and maintained the frontend deployment and release pipeline, with preview environments so other teams could validate changes independently before release.",
+			},
+			{
+				heading: "FizzPop",
+				body: "Led frontend for the Web3 game FizzPop, focusing on rendering performance for smooth gameplay; the game reached 39% Day-1 retention, roughly 3–4x the category average.",
 			},
 		],
 		metrics: [
@@ -113,22 +117,29 @@ export const caseStudies: CaseStudy[] = [
 export const skills = [
 	{
 		group: "Frontend core",
-		items: "React · Next.js · TypeScript · JavaScript (ES6+) · Tailwind CSS",
+		items: "React · Next.js · TypeScript · JavaScript (ES6+) · Tailwind CSS · RWD",
 	},
-	{ group: "Forms & state", items: "TanStack Query · React Hook Form · Zod" },
+	{
+		group: "Forms & state",
+		items: "TanStack Query · React Hook Form · Zod · Zustand",
+	},
+	{
+		group: "Testing & deployment",
+		items: "Vitest · Playwright · GitHub Actions · Vercel · Sentry",
+	},
 	{
 		group: "AI Workflow",
-		items: "Cursor · Claude Code · AI-assisted development",
+		items: "Claude Code · Cursor · project rules for review-ready AI code",
 	},
-	{ group: "Web3", items: "Viem · Wagmi" },
+	{ group: "Web3", items: "wagmi · viem · smart contract integration" },
 	{ group: "Tools", items: "Git · Figma · Storybook" },
-	{ group: "Languages", items: "Chinese (native) · English" },
+	{ group: "Languages", items: "Chinese (native) · English (professional)" },
 ];
 
 export const education = [
 	{
 		name: "AppWorks School — Frontend Engineer Program",
-		detail: "1,000+ hrs immersive training, 2022",
+		detail: "1,000+ hrs immersive training · Jan – Jun 2022",
 	},
-	{ name: "UNSW Sydney — Master of PR & Advertising", detail: "2015" },
+	{ name: "UNSW Sydney — Master of PR & Advertising", detail: "Jul 2015" },
 ];
