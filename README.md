@@ -1,6 +1,6 @@
 # Ellen Chen — Portfolio
 
-My personal portfolio site: [portfolio-ellenchen.vercel.app](https://portfolio-ellenchen.vercel.app/)
+My personal portfolio site: [ellenchen.dev](https://ellenchen.dev)
 
 Built with **Next.js 14 (App Router) + Tailwind CSS + TypeScript**, exported as a static site.
 
