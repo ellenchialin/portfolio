@@ -42,6 +42,8 @@ export type CaseStudy = {
   metrics: { value: string; caption: string }[]
   note?: string
   hasDiagram?: boolean
+  links?: { label: string; href: string }[]
+  image?: { src: string; alt: string }
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -112,6 +114,46 @@ export const caseStudies: CaseStudy[] = [
     ]
     // TODO: Lootex is public — add 1–2 screenshots to /public and wire them
     // into the CaseStudy component (an <Image> slot is stubbed there).
+  },
+  {
+    id: 'music-recs',
+    label: 'side_project / music-recs',
+    company: 'Music Recs — personal project',
+    period: 'Nov 2026',
+    title: 'Music recommendations that have to beat random',
+    summary:
+      'Pick 1–3 artists you love and get recommendations you can preview, then dig deeper from any record. A blind "Taste Check" asks whether the picks actually beat random songs from the same genre. Built in under a week, test-driven.',
+    sections: [
+      {
+        heading: 'Ranking',
+        body: "Each seed artist brings its own similar-artist list from Last.fm. The lists are merged with Reciprocal Rank Fusion, so an artist that several seeds agree on rises, and no single seed dominates the results. Previews and artwork come from the iTunes Search API."
+      },
+      {
+        heading: 'Staying up on free APIs',
+        body: "External calls go through a Postgres cache-aside layer that caches \"no preview\" but never \"API down\", so an outage can't poison the cache. Per-IP rate limiting uses atomic counts in Postgres, backed by site-wide API budgets and a circuit breaker. CSP, a CSRF origin check, and clickjacking protection cover the rest."
+      },
+      {
+        heading: 'Measuring whether it works',
+        body: 'The Taste Check is a blind comparison against random same-genre songs. It counts each visitor once and reports the result with a 95% confidence interval, written in plain language rather than statistics jargon.'
+      },
+      {
+        heading: 'How it was built',
+        body: 'Nuxt 4 (Vue 3, strict TypeScript), Pinia, Tailwind CSS v4, Motion for Vue, Postgres with Drizzle ORM, and zod, deployed on Vercel + Neon. Written test-first with Vitest unit tests, DB tests against real Postgres, and component tests.'
+      }
+    ],
+    metrics: [
+      { value: '< 1 week', caption: 'to build and ship' },
+      { value: '264', caption: 'tests, written test-first' },
+      { value: '95% CI', caption: 'on the blind Taste Check' }
+    ],
+    links: [
+      { label: 'Live site', href: 'https://musicrecs.ellenchen.dev' },
+      { label: 'Source', href: 'https://github.com/ellenchialin/music-recs' }
+    ],
+    image: {
+      src: '/music-recs.png',
+      alt: 'Music Recs: pick 1–3 artists you love, get recommendations you can preview'
+    }
   }
 ]
 

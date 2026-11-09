@@ -71,6 +71,34 @@ export function CaseStudyBlock({ study }: { study: CaseStudy }) {
         ))}
       </div>
 
+      {study.links && (
+        <div className="mt-8 flex flex-wrap gap-3">
+          {study.links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="rounded border border-line bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-cobalt hover:text-cobalt"
+            >
+              {l.label} ↗
+            </a>
+          ))}
+        </div>
+      )}
+
+      {study.image && (
+        <div className="mt-8 max-w-2xl">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={study.image.src}
+            alt={study.image.alt}
+            width={1200}
+            height={630}
+            loading="lazy"
+            className="h-auto w-full rounded-lg border border-line bg-surface"
+          />
+        </div>
+      )}
+
       {study.hasDiagram && (
         <div className="mt-8">
           <ArchDiagram />
