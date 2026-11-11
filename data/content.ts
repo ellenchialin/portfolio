@@ -185,5 +185,9 @@ export const education = [
   {
     name: 'UNSW Sydney — Master of Public Relations & Advertising',
     detail: 'Jul 2015'
+  },
+  {
+    name: 'Fu Jen Catholic University — Bachelor of Business Administration',
+    detail: 'Jun 2013'
   }
 ]
