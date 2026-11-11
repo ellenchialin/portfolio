@@ -43,7 +43,7 @@ export type CaseStudy = {
   note?: string
   hasDiagram?: boolean
   links?: { label: string; href: string }[]
-  image?: { src: string; alt: string }
+  diagramImage?: { src: string; alt: string; caption: string }
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -122,11 +122,11 @@ export const caseStudies: CaseStudy[] = [
     period: 'Nov 2026',
     title: 'Music recommendations that have to beat random',
     summary:
-      'Pick 1–3 artists you love and get recommendations you can preview, then dig deeper from any record. A blind "Taste Check" asks whether the picks actually beat random songs from the same genre. Built in under a week, test-driven.',
+      'Pick 1–3 artists you love and get recommendations you can preview, each with a one-line reason, then dig deeper from any record. A blind "Taste Check" asks whether the picks actually beat random songs from the same genre. Built in under a week, test-driven.',
     sections: [
       {
-        heading: 'Ranking',
-        body: "Each seed artist brings its own similar-artist list from Last.fm. The lists are merged with Reciprocal Rank Fusion, so an artist that several seeds agree on rises, and no single seed dominates the results. Previews and artwork come from the iTunes Search API."
+        heading: 'Ranking and reasons',
+        body: "Each seed artist brings its own similar-artist list from Last.fm. The lists are merged with Reciprocal Rank Fusion, so an artist that several seeds agree on rises, and no single seed dominates the results. Previews and artwork come from the iTunes Search API. Once the records are on screen, Claude Haiku writes a one-line reason for each in a single call per list, told to describe the sound and to say nothing when unsure. Reasons are validated with zod, cached, and capped at 300 calls a day; without them, records fall back to \"Similar to …\"."
       },
       {
         heading: 'Staying up on free APIs',
@@ -138,21 +138,23 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: 'How it was built',
-        body: 'Nuxt 4 (Vue 3, strict TypeScript), Pinia, Tailwind CSS v4, Motion for Vue, Postgres with Drizzle ORM, and zod, deployed on Vercel + Neon. Written test-first with Vitest unit tests, DB tests against real Postgres, and component tests.'
+        body: 'Nuxt 4 (Vue 3, strict TypeScript), Pinia, Tailwind CSS v4, Motion for Vue, Postgres with Drizzle ORM, zod, and Claude Haiku for reasons, deployed on Vercel + Neon. Written test-first with Vitest unit tests, DB tests against real Postgres, and component tests.'
       }
     ],
     metrics: [
       { value: '< 1 week', caption: 'to build and ship' },
-      { value: '264', caption: 'tests, written test-first' },
+      { value: '~290', caption: 'tests, written test-first' },
       { value: '95% CI', caption: 'on the blind Taste Check' }
     ],
     links: [
       { label: 'Live site', href: 'https://musicrecs.ellenchen.dev' },
       { label: 'Source', href: 'https://github.com/ellenchialin/music-recs' }
     ],
-    image: {
-      src: '/music-recs.png',
-      alt: 'Music Recs: pick 1–3 artists you love, get recommendations you can preview'
+    diagramImage: {
+      src: '/music-recs-architecture.png',
+      alt: 'Architecture: Nuxt pages call API routes (rate limit, zod); the Recommendations, Reasons and Taste Check services read and write a Postgres cache on Neon, which calls Last.fm and iTunes on a miss; Reasons optionally calls Claude Haiku',
+      caption:
+        'Architecture: API routes rate-limit and validate requests, three services share a Postgres cache on Neon, and Last.fm and iTunes are only called on a cache miss.'
     }
   }
 ]

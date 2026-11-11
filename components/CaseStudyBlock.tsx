@@ -85,18 +85,21 @@ export function CaseStudyBlock({ study }: { study: CaseStudy }) {
         </div>
       )}
 
-      {study.image && (
-        <div className="mt-8 max-w-2xl">
+      {study.diagramImage && (
+        <figure className="mt-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={study.image.src}
-            alt={study.image.alt}
-            width={1200}
-            height={630}
+            src={study.diagramImage.src}
+            alt={study.diagramImage.alt}
+            width={2336}
+            height={1218}
             loading="lazy"
             className="h-auto w-full rounded-lg border border-line bg-surface"
           />
-        </div>
+          <figcaption className="mt-2 text-xs leading-relaxed text-muted">
+            {study.diagramImage.caption}
+          </figcaption>
+        </figure>
       )}
 
       {study.hasDiagram && (
