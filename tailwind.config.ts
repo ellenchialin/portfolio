@@ -1,28 +1,34 @@
 import type { Config } from "tailwindcss";
 
+// Utilities map onto the Hallmark Specimen tokens in app/tokens.css,
+// so every colour and font stays a token.
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        paper: "#F4F6F8", // cool gray-blue page background
-        surface: "#FFFFFF", // cards
-        ink: "#0C1E2E", // deep navy text
-        muted: "#5A6B7B", // secondary text
-        line: "#D9DFE6", // hairline borders
-        cobalt: "#2547D0", // primary accent — links, emphasis
-        verified: "#178A50", // micro-accent — verification ticks only
+        paper: "var(--color-paper)",
+        "paper-2": "var(--color-paper-2)",
+        "paper-3": "var(--color-paper-3)",
+        ink: "var(--color-ink)",
+        "ink-2": "var(--color-ink-2)",
+        muted: "var(--color-muted)",
+        rule: "var(--color-rule)",
+        "rule-2": "var(--color-rule-2)",
+        accent: "var(--color-accent)",
+        success: "var(--color-success)",
       },
       fontFamily: {
-        display: ["Archivo", "system-ui", "sans-serif"],
-        sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
-        mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
+        display: ["var(--font-display)"],
+        sans: ["var(--font-body)"],
+        mono: ["var(--font-outlier)"],
       },
       maxWidth: {
-        page: "68rem",
+        page: "var(--container)",
       },
     },
   },
+  corePlugins: { container: false },
   plugins: [],
 };
 export default config;

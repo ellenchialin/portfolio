@@ -1,7 +1,7 @@
 import { profile, caseStudies, skills, education } from "@/data/content";
 import { ReviewPanel } from "@/components/ReviewPanel";
 import { CaseStudyBlock } from "@/components/CaseStudyBlock";
-import { FieldLabel } from "@/components/FieldLabel";
+import { Split } from "@/components/Split";
 
 const navLinks = [
 	{ href: "#work", label: "Work" },
@@ -11,120 +11,143 @@ const navLinks = [
 
 export default function Home() {
 	return (
-		<main className="mx-auto max-w-page px-5 sm:px-8">
-			{/* ------------------------------------------------ header */}
-			<header className="flex items-center justify-between py-6">
-				<p className="font-mono text-sm font-medium">ellen.chen</p>
-				<nav aria-label="Sections" className="flex gap-5">
-					{navLinks.map((l) => (
-						<a
-							key={l.href}
-							href={l.href}
-							className="text-sm text-muted transition-colors hover:text-cobalt"
-						>
-							{l.label}
-						</a>
-					))}
-				</nav>
-			</header>
-
-			{/* ------------------------------------------------ hero */}
-			<section className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.4fr_1fr]">
-				<div>
-					<h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
-						{profile.headline}
-					</h1>
-					<p className="mt-6 max-w-xl leading-relaxed text-ink/85">
-						{profile.intro}
-					</p>
-					<div className="mt-8 flex flex-wrap gap-3">
-						<a
-							href={profile.links.github}
-							className="rounded border border-ink bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-cobalt hover:border-cobalt"
-						>
-							GitHub
-						</a>
-						<a
-							href={profile.links.linkedin}
-							className="rounded border border-line bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-cobalt hover:text-cobalt"
-						>
-							LinkedIn
-						</a>
-						<a
-							href={profile.links.resume}
-							className="rounded border border-line bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-cobalt hover:text-cobalt"
-						>
-							Resume
-						</a>
+		<>
+			<main>
+				{/* ------------------------------------------------ header */}
+				<header className="container">
+					<div className="flex items-center justify-between gap-6 border-b border-rule py-5">
+						<p className="font-display text-2xl leading-none">ellen.chen</p>
+						<nav aria-label="Sections" className="flex gap-6">
+							{navLinks.map((l) => (
+								<a key={l.href} href={l.href} className="nav-link">
+									{l.label}
+								</a>
+							))}
+						</nav>
 					</div>
-				</div>
-				<ReviewPanel />
-			</section>
+				</header>
 
-			{/* ------------------------------------------------ work */}
-			<section id="work" className="scroll-mt-24 border-t border-line py-16">
-				<div className="space-y-20">
-					{caseStudies.map((study) => (
-						<CaseStudyBlock key={study.id} study={study} />
-					))}
-				</div>
-			</section>
-
-			{/* ------------------------------------------------ skills + education */}
-			<section id="skills" className="scroll-mt-24 border-t border-line py-16">
-				<FieldLabel>skills / education</FieldLabel>
-				<div className="mt-6 grid gap-x-12 gap-y-8 sm:grid-cols-[1.3fr_1fr]">
-					<dl className="space-y-3">
-						{skills.map((s) => (
-							<div
-								key={s.group}
-								className="flex flex-col gap-0.5 sm:flex-row sm:gap-4"
-							>
-								<dt className="w-36 shrink-0 font-mono text-xs uppercase tracking-wider text-muted sm:pt-1">
-									{s.group}
-								</dt>
-								<dd className="text-sm">{s.items}</dd>
+				{/* ------------------------------------------------ hero */}
+				<section className="container">
+					<div className="grid-12 gap-y-14 pb-20 pt-14 lg:pb-28 lg:pt-20">
+						<div className="col-span-12 lg:col-span-7">
+							<h1>{profile.headline}</h1>
+							<p className="lead mt-8">{profile.intro}</p>
+							<div className="mt-10 flex flex-wrap gap-3">
+								<a href={profile.links.github} className="btn btn--primary">
+									GitHub
+								</a>
+								<a href={profile.links.linkedin} className="btn btn--secondary">
+									LinkedIn
+								</a>
+								<a href={profile.links.resume} className="btn btn--secondary">
+									Resume
+								</a>
 							</div>
-						))}
-					</dl>
-					<ul className="space-y-3">
-						{education.map((e) => (
-							<li key={e.name}>
-								<p className="text-sm font-medium">{e.name}</p>
-								<p className="text-xs text-muted">{e.detail}</p>
+						</div>
+						<div className="col-span-12 self-end lg:col-span-5 lg:col-start-8">
+							<ReviewPanel />
+						</div>
+					</div>
+				</section>
+
+				{/* ------------------------------------------------ work */}
+				<section id="work" aria-label="Work" className="container scroll-mt-8">
+					{/* the index: every case, one row each */}
+					<ol className="border-t border-ink">
+						{caseStudies.map((s, i) => (
+							<li key={s.id}>
+								<a
+									href={`#${s.id}`}
+									className="index-row grid-12 items-baseline gap-y-1 border-b border-rule py-5"
+								>
+									<span className="figure col-span-2 text-sm text-accent lg:col-span-1">
+										{String(i + 1).padStart(2, "0")}
+									</span>
+									<span className="col-span-10 text-base font-medium lg:col-span-3">
+										{s.company}
+									</span>
+									<span className="index-title col-span-10 col-start-3 font-display text-xl leading-snug lg:col-span-6 lg:col-start-5">
+										{s.title}
+									</span>
+									<span className="figure col-span-10 col-start-3 text-sm text-muted lg:col-span-2 lg:col-start-11 lg:text-right">
+										{s.period}
+									</span>
+								</a>
 							</li>
 						))}
-					</ul>
-				</div>
-			</section>
+					</ol>
+
+					<div className="mt-16">
+						{caseStudies.map((study, i) => (
+							<CaseStudyBlock key={study.id} study={study} index={i} />
+						))}
+					</div>
+				</section>
+
+				{/* ------------------------------------------------ skills + education */}
+				<section id="skills" className="scroll-mt-8 bg-paper-2">
+					<div className="container">
+						<div className="grid-12 gap-y-12 py-[var(--section-gap)]">
+							<h2 className="col-span-12 lg:col-span-4">Skills / education</h2>
+							<div className="col-span-12 lg:col-span-8 lg:col-start-5">
+								<dl className="border-t border-ink">
+									{skills.map((s) => (
+										<div
+											key={s.group}
+											className="grid gap-x-[var(--gap-columns)] gap-y-1 border-b border-rule py-4 sm:grid-cols-[11rem_minmax(0,1fr)]"
+										>
+											<dt className="label sm:pt-0.5">{s.group}</dt>
+											<dd>
+												<Split text={s.items} />
+											</dd>
+										</div>
+									))}
+								</dl>
+								<ul className="mt-14 grid gap-[var(--gap-columns)] sm:grid-cols-2">
+									{education.map((e) => (
+										<li key={e.name} className="border-t border-rule pt-5">
+											<h3>{e.name}</h3>
+											<p className="label mt-3">
+												<Split text={e.detail} />
+											</p>
+										</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
 
 			{/* ------------------------------------------------ contact */}
-			<footer id="contact" className="scroll-mt-24 border-t border-line py-16">
-				<FieldLabel>contact</FieldLabel>
-				<h2 className="mt-4 font-display text-3xl font-bold tracking-tight">
-					Building something? Let's talk.
-				</h2>
-				<p className="mt-3 max-w-xl leading-relaxed text-ink/85">
-					I&rsquo;m open to frontend roles. The fastest way to reach me is
-					email.
-				</p>
-				<a
-					href={profile.links.email}
-					className="mt-6 inline-block rounded border border-ink bg-ink px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-cobalt hover:bg-cobalt"
-				>
-					chialin76@gmail.com
-				</a>
-				<p className="mt-12 font-mono text-xs text-muted">
-					© {new Date().getFullYear()} Chia Lin (Ellen) Chen · Built with
-					Next.js + Tailwind CSS ·{" "}
-					<a
-						href={profile.links.repo}
-						className="text-cobalt underline-offset-4 hover:underline"
-					>
-						source on GitHub
-					</a>
-				</p>
+			<footer id="contact" className="band-ink scroll-mt-8">
+				<div className="container">
+					<div className="grid-12 gap-y-10 pb-16 pt-[var(--section-gap)]">
+						<h2 className="col-span-12 lg:col-span-7">
+							Building something? Let&rsquo;s talk.
+						</h2>
+						<div className="col-span-12 self-end lg:col-span-4 lg:col-start-9">
+							<p className="lead">
+								I&rsquo;m open to frontend roles. The fastest way to reach me is
+								email.
+							</p>
+							<a href={profile.links.email} className="btn btn--primary mt-8">
+								chialin76@gmail.com
+							</a>
+						</div>
+					</div>
+					<div className="flex flex-col gap-2 border-t border-ink-2 py-8 text-sm text-rule-2 sm:flex-row sm:gap-10">
+						<p>© {new Date().getFullYear()} Chia Lin (Ellen) Chen</p>
+						<p>Built with Next.js + Tailwind CSS</p>
+						<p>
+							<a href={profile.links.repo} className="link text-paper">
+								source on GitHub
+							</a>
+						</p>
+					</div>
+				</div>
 			</footer>
-		</main>
+		</>
 	);
 }

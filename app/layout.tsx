@@ -20,11 +20,11 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-paper font-sans text-ink antialiased">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

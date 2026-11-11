@@ -1,21 +1,16 @@
-// Section headers styled as form field labels — the structural device of the
-// page. Encodes the theme truthfully: the work itself is forms and schemas.
+// Small labels in the body face, sentence case, untracked (Hallmark Specimen).
 export function FieldLabel({ children }: { children: string }) {
-  return (
-    <p className="font-mono text-xs uppercase tracking-widest text-muted">
-      <span aria-hidden="true" className="mr-2 text-cobalt">
-        ▸
-      </span>
-      {children}
-    </p>
-  );
+  return <p className="label">{children}</p>;
 }
 
+// A figure from a case study, set in the display serif at title size over its caption.
 export function Metric({ value, caption }: { value: string; caption: string }) {
   return (
-    <div className="border-l-2 border-cobalt pl-3">
-      <p className="font-mono text-lg font-medium leading-tight">{value}</p>
-      <p className="text-xs text-muted">{caption}</p>
+    <div className="border-t border-rule py-3">
+      <p className="font-display text-[1.75rem] leading-tight [font-variation-settings:'opsz'_48]">
+        {value}
+      </p>
+      <p className="label mt-1">{caption}</p>
     </div>
   );
 }
